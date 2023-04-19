@@ -1,0 +1,96 @@
+/* kaste-version.h.in
+ *
+ * Copyright 2023 Aleks Rutins
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#pragma once
+
+#if !defined(KASTE_INSIDE) && !defined(KASTE_COMPILATION)
+# error "Only <kaste.h> can be included directly."
+#endif
+
+/**
+ * SECTION:kasteversion
+ * @short_description: kaste version checking
+ *
+ * kaste provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * KASTE_MAJOR_VERSION:
+ *
+ * kaste major version component (e.g. 1 if %KASTE_VERSION is 1.2.3)
+ */
+#define KASTE_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * KASTE_MINOR_VERSION:
+ *
+ * kaste minor version component (e.g. 2 if %KASTE_VERSION is 1.2.3)
+ */
+#define KASTE_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * KASTE_MICRO_VERSION:
+ *
+ * kaste micro version component (e.g. 3 if %KASTE_VERSION is 1.2.3)
+ */
+#define KASTE_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * KASTE_VERSION
+ *
+ * kaste version.
+ */
+#define KASTE_VERSION (@VERSION@)
+
+/**
+ * KASTE_VERSION_S:
+ *
+ * kaste version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define KASTE_VERSION_S "@VERSION@"
+
+#define KASTE_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * KASTE_VERSION_HEX:
+ *
+ * kaste version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define KASTE_VERSION_HEX \
+        (KASTE_ENCODE_VERSION (KASTE_MAJOR_VERSION, KASTE_MINOR_VERSION, KASTE_MICRO_VERSION))
+
+/**
+ * KASTE_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of kaste is greater than the required one.
+ */
+#define KASTE_CHECK_VERSION(major,minor,micro)   \
+        (KASTE_MAJOR_VERSION > (major) || \
+         (KASTE_MAJOR_VERSION == (major) && KASTE_MINOR_VERSION > (minor)) || \
+         (KASTE_MAJOR_VERSION == (major) && KASTE_MINOR_VERSION == (minor) && \
+          KASTE_MICRO_VERSION >= (micro)))
