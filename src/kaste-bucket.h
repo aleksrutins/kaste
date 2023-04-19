@@ -8,6 +8,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <gio/gio.h>
 
 G_BEGIN_DECLS
 
@@ -72,6 +73,14 @@ gboolean kaste_bucket_write   (KasteBucket *self,
                                gchar       *resource,
                                GObject     *value);
 
-
+/**
+ * kaste_bucket_list_contents:
+ * @self: a #KasteBucket
+ *
+ * List the contents of the bucket (including sub-buckets).
+ *
+ * Returns: (transfer full): a #GFileEnumerator for the bucket
+ */
+GFileEnumerator *kaste_bucket_list_contents (KasteBucket *self);
 
 G_END_DECLS

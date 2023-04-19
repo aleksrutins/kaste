@@ -188,3 +188,12 @@ kaste_bucket_write (KasteBucket *self,
 
   return TRUE;
 }
+
+GFileEnumerator *
+kaste_bucket_list_contents (KasteBucket *self)
+{
+  g_autofree gchar *path = kaste_bucket_get_path (self);
+  g_autoptr (GFile) file = g_file_new_for_path (path);
+
+  return g_file_enumerate_children (file, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
+}
