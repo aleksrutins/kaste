@@ -19,6 +19,16 @@ kaste_lib = shared_library('kaste-' + api_version,
        install: true,
 )
 
+g_ir_compiler = find_program('g-ir-compiler')
+custom_target('Kaste-' + api_version + '.typelib', command: [g_ir_compiler, '--output', '@OUTPUT@', '@INPUT@'],
+              input: meson.current_build_dir() / 'Kaste-' + api_version + '.gir',
+              output: 'Kaste-' + api_version + '.typelib',
+              depends: kaste_lib,
+              install: true,
+              install_dir: get_option('libdir') / 'girepository-1.0')
+
+
+
 pkg = import('pkgconfig')
 pkg.generate(
   description: 'A library for storing application data in GNOME apps',
