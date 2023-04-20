@@ -20,8 +20,7 @@ kaste_lib = shared_library('kaste-' + api_version,
 )
 
 g_ir_compiler = find_program('g-ir-compiler')
-custom_target('Kaste-' + api_version + '.typelib', command: [g_ir_compiler, '--output', '@OUTPUT@', '@INPUT@'],
-              input: meson.current_build_dir() / 'Kaste-' + api_version + '.gir',
+custom_target('Kaste-' + api_version + '.typelib', command: [g_ir_compiler, '--shared-library', kaste_lib.full_path(), '--output', '@OUTPUT@', meson.current_build_dir() / 'Kaste-' + api_version + '.gir'],
               output: 'Kaste-' + api_version + '.typelib',
               depends: kaste_lib,
               install: true,
