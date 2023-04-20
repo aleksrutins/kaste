@@ -14,13 +14,13 @@ namespace Kaste {
         }
 
         public Bucket(string rdns, bool shared) {
-            info("constructing");
+            message("constructor %s", rdns);
             this.rdns = rdns;
             this.shared = shared;
         }
 
         construct {
-            info("construct block");
+            message("construct block %s", this.rdns);
             if(this.shared) {
                 warning("Shared buckets are not yet implemented, and will have no effect");
             }
