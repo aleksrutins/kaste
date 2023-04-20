@@ -1,7 +1,7 @@
 namespace Kaste {
     public class Bucket : Object {
-        public string rdns { get; set; }
-        public bool shared { get; set; }
+        public string rdns { get; construct; }
+        public bool shared { get; construct; }
 
         public string path {
             owned get {
