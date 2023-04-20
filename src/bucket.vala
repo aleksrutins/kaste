@@ -14,9 +14,8 @@ namespace Kaste {
         }
 
         public Bucket(string rdns, bool shared) {
+            Object(rdns: rdns, shared: shared);
             message("constructor %s", rdns);
-            this.rdns = rdns;
-            this.shared = shared;
         }
 
         construct {
