@@ -19,12 +19,11 @@ namespace Kaste {
         }
 
         construct {
-            var path = this.path;
-            var file = File.new_for_path(path);
-
             if(this.shared) {
                 warning("Shared buckets are not yet implemented, and will have no effect");
             }
+            var path = this.path;
+            var file = File.new_for_path(path);
 
             try {
                 file.make_directory_with_parents();
