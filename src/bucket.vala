@@ -18,7 +18,6 @@ namespace Kaste {
         }
 
         construct {
-            message("construct block %s", this.rdns);
             if(this.shared) {
                 warning("Shared buckets are not yet implemented, and will have no effect");
             }
