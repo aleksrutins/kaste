@@ -36,6 +36,5 @@ pkg.generate(
      filebase: 'kaste-' + api_version,
       version: meson.project_version(),
       subdirs: 'kaste',
-     requires: 'gio-2.0',
-  install_dir: join_paths(get_option('libdir'), 'pkgconfig')
+     requires: ['gio-2.0', 'glib-2.0', 'gobject-2.0', 'json-glib-1.0'],
 )
