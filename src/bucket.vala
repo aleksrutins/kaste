@@ -39,7 +39,7 @@ namespace Kaste {
             return path.to_path();
         }
 
-        public Object read(Type t, string resource) {
+        public Object? read(Type t, string resource) {
             try {
                 string contents;
                 var path = get_resource_path(resource);
