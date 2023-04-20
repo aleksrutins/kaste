@@ -14,7 +14,7 @@ namespace Kaste {
         }
 
         public Bucket(string rdns, bool shared) {
-            log(null, INFO, "constructing");
+            log(null, LEVEL_INFO, "constructing");
             this.rdns = rdns;
             this.shared = shared;
         }
