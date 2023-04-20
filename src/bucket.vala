@@ -1,7 +1,7 @@
 namespace Kaste {
-    public class Bucket {
-        private string rdns;
-        private bool shared;
+    public class Bucket : Object {
+        public string rdns { get; private set; }
+        public bool shared { get; private set; }
 
         public string path {
             owned get {
@@ -16,7 +16,9 @@ namespace Kaste {
         public Bucket(string rdns, bool shared) {
             this.rdns = rdns;
             this.shared = shared;
+        }
 
+        construct {
             var path = this.path;
             var file = File.new_for_path(path);
 
