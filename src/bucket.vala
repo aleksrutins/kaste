@@ -9,7 +9,7 @@ namespace Kaste {
                 var path = new PathBuf.from_path(Environment.get_user_data_dir());
                 path.push("bucket");
                 path.push(rdns_path);
-                return path.free_to_path();
+                return path.to_path();
             }
         }
 
@@ -37,7 +37,7 @@ namespace Kaste {
         public string get_resource_path(string resource) {
             var path = new PathBuf.from_path(this.path);
             path.push(resource);
-            return path.free_to_path();
+            return path.to_path();
         }
 
         public T read<T>(string resource) {
