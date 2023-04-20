@@ -15,8 +15,10 @@ kaste_deps = [
 kaste_lib = shared_library('kaste-' + api_version,
   kaste_sources,
   vala_gir: 'Kaste-' + api_version + '.gir',
+  vala_vapi: 'kaste-' + api_version + '.vapi',
   dependencies: kaste_deps,
-       install: true,
+  install: true,
+  install_dir: [true, true, true, true]
 )
 
 g_ir_compiler = find_program('g-ir-compiler')
