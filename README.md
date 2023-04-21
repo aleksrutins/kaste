@@ -18,7 +18,7 @@ Returns the storage path of this bucket.
 ### `string get_resource_path(string resource)`
 Returns the storage path of the specified resource, whether or not it exists.
 
-### `string read(string resource, GType t)`
+### `GObject *read(GType t, string resource)`
 Read a resource.
 
 ### `boolean write(string resource, GObject *value)`
